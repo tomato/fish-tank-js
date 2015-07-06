@@ -1,0 +1,18 @@
+{
+  "name": "HotelCRM",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "angular": "~1.4.1",
+    "angular-ui-router": "~0.2.15",
+    "angular-resource": "~1.4.1",
+    "lodash": "~3.9.3",
+    "api-check": "~7.5.0",
+    "angular-formly": "~6.15.2",
+    "angular-formly-templates-bootstrap": "~4.3.2",
+    "bootstrap": "~3.3.5"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.4.1"
+  }
+}
