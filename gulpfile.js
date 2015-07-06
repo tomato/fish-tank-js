@@ -6,14 +6,7 @@ var runSequence = require('run-sequence');
 var requireDir = require('require-dir');
 var tasks = requireDir('./gulp');
 
-gulp.task('serve', ['server:build:watch', 'client:build:watch'], function() {
-  browserSync.init({
-    files: ['client/**/*.*'],
-    proxy: 'http://localhost:9000',
-    port: 4000,
-    browser: ['google chrome']
-  });
-});
+gulp.task('watch', ['server:build:watch', 'client:build:watch']);
 
 gulp.task('test', function() {
   return runSequence('client:test', 'server:test');

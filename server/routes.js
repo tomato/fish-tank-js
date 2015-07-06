@@ -12,5 +12,9 @@ module.exports = function(app) {
     res.json(['goldie', 'fishy' ]);
   });
 
+  app.route('/*')
+      .get(function(req, res) {
+        res.sendfile(app.get('appPath') + '/index.html');
+      });
 
 };

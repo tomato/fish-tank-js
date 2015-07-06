@@ -1,5 +1,5 @@
 {
-  "name": "HotelCRM",
+  "name": "FishTankJS",
   "version": "0.0.0",
   "main": "server/app.js",
   "dependencies": {
@@ -36,6 +36,7 @@
     "gulp-mocha": "^2.1.1",
     "gulp-nodemon": "^2.0.3",
     "gulp-plumber": "^1.0.1",
+    "gulp-util": "^3.0.6",
     "jasmine-core": "^2.3.4",
     "jshint-stylish": "^2.0.1",
     "karma": "^0.12.36",

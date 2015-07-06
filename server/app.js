@@ -4,27 +4,31 @@
 
 'use strict';
 
-// Set default node environment to development
-process.env.NODE_ENV = process.env.NODE_ENV || 'development';
-
 var express = require('express');
-var BPromise = require("bluebird");
-var mongoose = BPromise.promisifyAll(require('mongoose'));
-
-var config = require('./config/environment');
-
-// Connect to database
-mongoose.connect(config.mongo.uri, config.mongo.options);
+var path = require('path');
 
 // Setup server
 var app = express();
 var server = require('http').createServer(app);
-require('./config/express')(app);
-require('./routes')(app);
 
+app.get('/api', function (req, res) {
+  res.json(['goldie', 'fishy' ]);
+});
+
+app.use(express.static('client'));
+
+app.route('/*')
+    .get(function(req, res) {
+      res.sendfile(path.resolve('client/index.html'));
+    });
 // Start server
-server.listen(config.port, config.ip, function () {
-  console.log('Express server listening on %d, in %s mode', config.port, app.get('env'));
+var server = app.listen(3000, function () {
+
+  var host = server.address().address;
+  var port = server.address().port;
+
+  console.log('Fish Tank listening at http://%s:%s', host, port);
+
 });
 
 // Expose app
