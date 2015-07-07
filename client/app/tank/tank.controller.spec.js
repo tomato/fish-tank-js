@@ -4,7 +4,7 @@ import 'angular';
 import 'angular-mocks';
 import app from 'client/app/main.js';
 
-describe('Guest list controller', function() {
+describe('Tank controller', function() {
   beforeEach(angular.mock.module(app.name));
 
   var $controller;
@@ -16,22 +16,22 @@ describe('Guest list controller', function() {
     $httpBackend = $injector.get('$httpBackend');
 
     createController = function() {
-      return $controller('guestListController');
+      return $controller('tankController');
     };
   }));
 
   describe('instantiate', function(){
-    it('should have a list of Guests', function(){
+    it('should have some fish', function(){
 
-      $httpBackend.expectGET('/api/guests')
+      $httpBackend.expectGET('/api')
         .respond(200, [
-          { name: { last: 'Fred'}},
-          { name: { last: 'George'}}
+          'fred',
+          'george'
         ]);
 
       var controller = createController();
       $httpBackend.flush();
-      expect(controller.guests.length).toBe(2);
+      expect(controller.fish.length).toBe(2);
     });
   });
 });

@@ -4,22 +4,15 @@
 import 'angular';
 import 'angular-resource';
 import 'angular-ui-router';
-import 'angular-formly';
-import 'angular-formly-bootstrap';
-import 'api-check';
-import guestModule from 'client/app/states/guest/guest.js';
+
+import tankModule from 'client/app/tank/tank.js';
 
 let mainModule = angular.module('app', [
     // angular modules
-    'ngResource',
     'ui.router',
 
-    // 3rd party modules
-    'formly',
-    'formlyBootstrap',
-
     // core modules
-    guestModule.name
+    tankModule.name
 ]);
 
 angular.element(document).ready(function() {
