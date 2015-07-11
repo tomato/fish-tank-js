@@ -28,10 +28,13 @@ describe('Tank controller', function() {
           'fred',
           'george'
         ]);
+      $httpBackend.expectGET('/api/fred').respond(200,{ needs: 2});
+      $httpBackend.expectGET('/api/george').respond(200,{ needs: 1});
 
       var controller = createController();
       $httpBackend.flush();
-      expect(controller.fish.length).toBe(2);
+      expect(controller.feed).toBe(3);
+      expect(controller.allReturned).toBeTruthy();
     });
   });
 });
