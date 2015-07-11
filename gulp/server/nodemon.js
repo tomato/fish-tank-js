@@ -7,6 +7,7 @@ var BROWSER_SYNC_RELOAD_DELAY = 500;
 gulp.task('server:nodemon', function(cb) {
   var called = false;
   return nodemon({
+    execMap: { 'js':'node --harmony' },
     script: 'server/app.js',
     watch: ['server/**/*.js']
   })
