@@ -14,11 +14,11 @@ describe('Tank controller', function() {
       get: function(url){
         console.debug('param was' + url)  ;
         switch (url) {
-          case '/api/cat':
+          case 'cat':
             return Promise.resolve(['tim', 'tom']);
-          case '/api/tim':
+          case 'tim':
             return Promise.resolve({ needs: 1});
-          case '/api/tom':
+          case 'tom':
             return Promise.resolve({needs: 5});
           default:
             throw 'unmatched url was' + url;

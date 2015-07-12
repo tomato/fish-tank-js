@@ -4,7 +4,7 @@ let Api = function($http){
   return {
     get: function(url){
       return new Promise(function(resolve, reject){
-        $http.get(url)
+        $http.get('/api/' + url)
         .success(resolve)
         .error(reject);
       });
