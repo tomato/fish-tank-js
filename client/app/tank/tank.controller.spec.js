@@ -9,32 +9,44 @@ describe('Tank controller', function() {
 
   var $controller;
   var createController;
-  var $httpBackend;
+  var FakeApi = function(){
+    return {
+      get: function(url){
+        console.debug('param was' + url)  ;
+        switch (url) {
+          case '/api':
+            return Promise.resolve(['tim', 'tom']);
+          case '/api/tim':
+            return Promise.resolve({ needs: 1});
+          case '/api/tom':
+            return Promise.resolve({needs: 5});
+          default:
+            throw 'unmatched url was' + url;
+          }
+      }
+    };
+  };
 
   beforeEach(inject(function($injector) {
-    $controller = $injector.get('$controller');
-    $httpBackend = $injector.get('$httpBackend');
 
-    createController = function() {
-      return $controller('tankController');
+    $controller = $injector.get('$controller');
+
+    createController = function(fakeApi) {
+      return $controller('tankController', { Api: fakeApi, $scope: { $apply: c => c() }});
     };
   }));
 
   describe('instantiate', function(){
-    it('should have some fish', function(){
+    it('should calculate feed', function(done){
 
-      $httpBackend.expectGET('/api')
-        .respond(200, [
-          'fred',
-          'george'
-        ]);
-      $httpBackend.expectGET('/api/fred').respond(200,{ needs: 2});
-      $httpBackend.expectGET('/api/george').respond(200,{ needs: 1});
+      var fakeApi = new FakeApi();
 
-      var controller = createController();
-      $httpBackend.flush();
-      expect(controller.feed).toBe(3);
-      expect(controller.allReturned).toBeTruthy();
+      var controller = createController(fakeApi);
+      setTimeout(() => {
+        expect(controller.feed).toBe(6);
+        done();
+      },0);
     });
+
   });
 });

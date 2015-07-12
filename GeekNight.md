@@ -11,3 +11,6 @@ Setting up the build
 Review the ES5
 
 So how can we improve it?
+
+Show my ES6 version
+Show an ES6 class version
