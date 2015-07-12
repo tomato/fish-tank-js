@@ -9,7 +9,7 @@ let TankController = function ($http) {
       return totalFish === returnedFish;
     };
 
-    $http.get('/api')
+    $http.get('/api/cat')
       .success(function(data){
         totalFish = data.length;
         data.forEach(function(fishName){
@@ -20,7 +20,7 @@ let TankController = function ($http) {
           });
         });
     })
-    .error(function(err){ console.log('yo' + err); });
+    .error(function(err){ console.log(err); });
 };
 
 TankController.$inject = ['$http'];

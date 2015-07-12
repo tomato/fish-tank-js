@@ -16,7 +16,7 @@ var fishes = [
   { name: 'Fred', needs: 2, message: 'zzzzzzz'},
 ];
 
-app.get('/api', function (req, res) {
+app.get('/api/cat', function (req, res) {
   res.json(fishes.map(f => f.name));
 });
 

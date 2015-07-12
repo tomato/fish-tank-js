@@ -23,7 +23,7 @@ describe('Tank controller', function() {
   describe('instantiate', function(){
     it('should have some fish', function(){
 
-      $httpBackend.expectGET('/api')
+      $httpBackend.expectGET('/api/cat')
         .respond(200, [
           'fred',
           'george'
