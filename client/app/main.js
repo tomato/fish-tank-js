@@ -10,8 +10,6 @@ import Api from 'client/app/services/api.js';
 let mainModule = angular.module('app', [
     // angular modules
     'ui.router',
-
-
     // core modules
     tankModule.name
 ]);

@@ -14,7 +14,7 @@ describe('Tank controller', function() {
       get: function(url){
         console.debug('param was' + url)  ;
         switch (url) {
-          case '/api':
+          case '/api/cat':
             return Promise.resolve(['tim', 'tom']);
           case '/api/tim':
             return Promise.resolve({ needs: 1});

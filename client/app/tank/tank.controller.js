@@ -2,7 +2,7 @@
 
 let TankController = function (Api, $scope) {
 
-  Api.get('/api')
+  Api.get('/api/cat')
     .then(data => {
       Promise.all(data.map(fishName => Api.get('/api/' + fishName)))
       .then(fishes => {
@@ -11,7 +11,7 @@ let TankController = function (Api, $scope) {
         });
       });
     })
-    .catch(function(err){
+    .catch(err => {
       if(err){
         console.log(err);
       }
